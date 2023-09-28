@@ -76,7 +76,11 @@ export class AppComponent implements OnInit{
   }
 
   grabTimesConvertedZones() {
-      this.httpClient.get(this.baseURL + '/link', {responseType: 'text'})
+    this.httpClient.get('http://localhost:8080/link/convertTimes', { responseType: 'text' }).subscribe(
+      (res) => {
+        this.timesConvertedZones = res;
+      }
+    );
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
