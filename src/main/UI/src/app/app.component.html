@@ -23,6 +23,10 @@
   <div class="scene" id="welcome">
     <article class="content">
 
+      <div>
+      <h2>{{ englishWelcomeMessage$ | async }}</h2>
+      <h2>{{ frenchWelcomeMessage$ | async }}</h2>
+    </div>
 
 
       <div class="row">
@@ -61,7 +65,10 @@
 
         </div>
       </div>
-
+      <div>
+        <br/>  <p style="color:white; font-size:18px">Next online live presentation is being held at: +
+        <br/> {{ timesConvertedZones }}!</p>
+      </div>
       <h1>Available Rooms</h1>
 
       <div class="row" *ngIf="rooms">

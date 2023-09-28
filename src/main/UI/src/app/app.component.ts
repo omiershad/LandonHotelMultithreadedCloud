@@ -35,18 +35,22 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
 
+
+  timesConvertedZones: string = '';
+
     ngOnInit(){
 
 
 
+      this.grabTimesConvertedZones();
+
 
       this.frenchWelcomeMessage$ =
-        this.httpClient.get(this.baseURL + '/welcome?lang=fr-CA',
+        this.httpClient.get(this.baseURL + '/welcome?lang=en-US',
           { responseType: 'text' });
       this.englishWelcomeMessage$ =
         this.httpClient.get(this.baseURL + '/welcome?lang=fr-CA',
           { responseType: 'text' });
-
 
 
 
@@ -69,6 +73,10 @@ export class AppComponent implements OnInit{
       this.currentCheckInVal = x.checkin;
       this.currentCheckOutVal = x.checkout;
     });
+  }
+
+  grabTimesConvertedZones() {
+      this.httpClient.get(this.baseURL + '/link', {responseType: 'text'})
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
